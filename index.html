@@ -1,37 +1,247 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Zytherix Systems</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {margin:0; font-family: Arial; background:#0b0f1a; color:white;}
-    header {padding:60px; text-align:center; background:#111827;}
-    h1 {font-size:42px;}
-    section {padding:40px; max-width:900px; margin:auto;}
-    footer {text-align:center; padding:20px; background:#111827;}
-  </style>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zytherix Systems - Engineering the future of digital ecosystems. Scaling 500+ intelligent apps and global utility tools.">
+    <title>Zytherix Systems | Global Tech Ecosystem</title>
+    <!-- Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #020617;
+            --surface-color: #0f172a;
+            --accent-color: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.4);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: #1e293b;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
+        /* Reset & Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { background-color: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3, .brand { font-family: 'Outfit', sans-serif; }
+
+        /* Background Glows */
+        .bg-glow {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(6, 182, 212, 0.08) 0%, transparent 40%);
+            z-index: -1; pointer-events: none;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 1.5rem 10%;
+            background: rgba(2, 6, 23, 0.82); backdrop-filter: blur(12px);
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; border-bottom: 1px solid var(--border-color);
+        }
+        .brand { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.5px; }
+        .brand span { color: var(--accent-color); }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 0.9rem; transition: var(--transition); }
+        .nav-links a:hover { color: var(--accent-color); }
+
+        /* Hero */
+        header { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 4rem 10%; animation: fadeIn 1s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .hero-tag { background: rgba(99, 102, 241, 0.1); color: var(--accent-color); padding: 0.5rem 1.2rem; border-radius: 2rem; font-size: 0.8rem; font-weight: 600; margin-bottom: 1.5rem; border: 1px solid rgba(99, 102, 241, 0.2); text-transform: uppercase; letter-spacing: 2px; }
+        h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 2rem; font-weight: 800; max-width: 900px; }
+        .gradient-text { background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-color) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subheadline { color: var(--text-secondary); font-size: 1.2rem; max-width: 700px; margin-bottom: 3rem; }
+
+        /* Buttons */
+        .btn { padding: 1rem 2.5rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; transition: var(--transition); cursor: pointer; display: inline-block; }
+        .btn-primary { background: var(--accent-color); color: white; box-shadow: 0 10px 30px var(--accent-glow); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px var(--accent-glow); }
+        .btn-outline { border: 1px solid var(--border-color); color: var(--text-primary); }
+        .btn-outline:hover { border-color: var(--accent-color); background: rgba(99, 102, 241, 0.05); }
+
+        /* Sections */
+        section { padding: 8rem 10%; border-bottom: 1px solid var(--border-color); }
+        .section-header { margin-bottom: 4rem; max-width: 650px; }
+        .section-header h2 { font-size: 2.8rem; margin-bottom: 1.2rem; line-height: 1.2; }
+        .section-header p { color: var(--text-secondary); font-size: 1.1rem; }
+
+        /* Grid Layouts */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+        .about-card { background: var(--surface-color); padding: 3rem; border-radius: 1.5rem; border: 1px solid var(--border-color); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .product-card { background: var(--surface-color); padding: 2.5rem; border-radius: 1.2rem; border: 1px solid var(--border-color); transition: var(--transition); }
+        .product-card:hover { transform: translateY(-10px); border-color: var(--accent-color); }
+        .icon-box { width: 48px; height: 48px; background: rgba(99, 102, 241, 0.1); border-radius: 0.8rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: var(--accent-color); font-weight: 800; font-size: 0.9rem; border: 1px solid rgba(99, 102, 241, 0.2); }
+
+        /* Pills */
+        .tech-showcase { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+        .tech-pill { background: rgba(30, 41, 59, 0.4); padding: 0.8rem 1.6rem; border-radius: 3rem; border: 1px solid var(--border-color); font-size: 0.9rem; font-weight: 500; color: var(--text-primary); }
+
+        /* Contact */
+        .contact-container { text-align: center; }
+        .email-link { font-size: clamp(1.5rem, 5vw, 2.5rem); color: var(--accent-color); text-decoration: none; font-weight: 800; transition: var(--transition); letter-spacing: -1px; }
+        .email-link:hover { filter: brightness(1.2); letter-spacing: 0px; }
+
+        /* Privacy Policy Box */
+        .privacy-box { background: #020617; padding: 3rem; border-radius: 1.2rem; border: 1px solid var(--border-color); max-height: 500px; overflow-y: auto; text-align: left; margin-top: 2rem; }
+        .privacy-box h3 { margin: 1.5rem 0 0.8rem; font-size: 1.1rem; color: var(--text-primary); }
+        .privacy-box p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; }
+
+        /* Footer */
+        footer { padding: 5rem 10% 3rem; text-align: center; background: #010409; }
+        .footer-logo { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
+        .footer-logo span { color: var(--accent-color); }
+        .copyright { color: #475569; font-size: 0.85rem; margin-top: 3rem; border-top: 1px solid #1e293b77; padding-top: 2rem; }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .nav-links { display: none; }
+            .about-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 3rem; }
+            section { padding: 6rem 6%; }
+        }
+    </style>
+</head>
 <body>
 
-<header>
-  <h1>Zytherix Systems</h1>
-  <p>Official website of Zytherix Systems - Building next-gen apps & software</p>
-</header>
+    <div class="bg-glow"></div>
 
-<section>
-  <h2>About Us</h2>
-  <p>Zytherix Systems develops scalable mobile applications, AI tools, and digital solutions across multiple industries.</p>
-</section>
+    <nav>
+        <div class="brand">ZYTHERIX<span>SYSTEMS</span></div>
+        <div class="nav-links">
+            <a href="#about">Mission</a>
+            <a href="#ecosystem">Ecosystem</a>
+            <a href="#technology">Tech</a>
+            <a href="#privacy">Privacy</a>
+            <a href="mailto:contact@zytherix.com" class="btn btn-outline" style="padding: 0.6rem 1.8rem; border-radius: 3rem;">Contact</a>
+        </div>
+    </nav>
 
-<section>
-  <h2>Contact</h2>
-  <p>Email: contact@zytherix.com</p>
-</section>
+    <header id="home">
+        <div class="hero-tag">Engineering the Future</div>
+        <h1>Systemic Innovation at <span class="gradient-text">Global Scale.</span></h1>
+        <p class="subheadline">Architecting a modular tech ecosystem of 500+ intelligent applications, utility tools, and platforms designed to empower modern digital experiences.</p>
+        <div style="display: flex; gap: 1rem;">
+            <a href="#ecosystem" class="btn btn-primary">Explore Ecosystem</a>
+            <a href="#about" class="btn btn-outline">Our Philosophy</a>
+        </div>
+    </header>
 
-<footer>
-  <p>© 2026 Zytherix Systems</p>
-</footer>
+    <section id="about">
+        <div class="about-grid">
+            <div>
+                <div class="section-header">
+                    <h2>Visionary Engineering.<br>Limitless Growth.</h2>
+                    <p>Zytherix Systems is founded on the principle that technology should be as scalable as human imagination. We specialize in high-performance application development and digital architecture.</p>
+                </div>
+                <p style="color: var(--text-secondary);">We don't just build apps; we engineer workflows. Our objective is to deploy a global network of specialized tools that simplify complexity and automate productivity for millions of users worldwide.</p>
+            </div>
+            <div class="about-card">
+                <h3 style="margin-bottom: 2rem; color: var(--accent-color);">The Core Pillars</h3>
+                <div style="margin-bottom: 1.5rem;">
+                    <strong>01. Scalability</strong>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Building infrastructures that grow seamlessly with user demand and data volume.</p>
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <strong>02. Human-Centricity</strong>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">UI/UX design that reduces cognitive load and maximizes utility for the end-user.</p>
+                </div>
+                <div>
+                    <strong>03. Performance</strong>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Optimized codebases delivering ultra-fast response times and absolute reliability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ecosystem">
+        <div class="section-header">
+            <h2>The Zytherix Ecosystem</h2>
+            <p>Our portfolio spans multiple industries, delivering curated value through modular, high-impact applications.</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="icon-box">WP</div>
+                <h3>Productivity Suites</h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">Advanced organizers and time-management systems for high-performance individuals.</p>
+            </div>
+            <div class="product-card">
+                <div class="icon-box">AI</div>
+                <h3>Intelligent Tools</h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">Harnessing machine learning to automate creative tasks and data analysis in real-time.</p>
+            </div>
+            <div class="product-card">
+                <div class="icon-box">UT</div>
+                <h3>Utility Ecosystem</h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">Fundamental digital tools that enhance mobile hardware capabilities and daily efficiency.</p>
+            </div>
+            <div class="product-card">
+                <div class="icon-box">PL</div>
+                <h3>Platform Layers</h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">Distributed backends and secure APIs powering the next generation of software.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="technology">
+        <div class="section-header">
+            <h2>Powered by Next-Gen Tech</h2>
+            <p>We leverage industry-leading frameworks and distributed architectures to ensure security and cross-platform synergy.</p>
+        </div>
+        <div class="tech-showcase">
+            <div class="tech-pill">Artificial Intelligence / LLM</div>
+            <div class="tech-pill">Edge Computing</div>
+            <div class="tech-pill">Distributed Systems</div>
+            <div class="tech-pill">High-Concurrency Architectures</div>
+            <div class="tech-pill">Next-Gen Android Frameworks</div>
+            <div class="tech-pill">End-to-End Encryption</div>
+            <div class="tech-pill">Cloud-Native Microservices</div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-container">
+            <div class="section-header" style="margin-inline: auto;">
+                <h2>Begin the Future.</h2>
+                <p>Interested in partnerships, investments, or enterprise solutions?</p>
+            </div>
+            <a href="mailto:contact@zytherix.com" class="email-link">contact@zytherix.com</a>
+            <p style="margin-top: 2rem; color: var(--text-secondary); font-size: 0.9rem;">Direct access to our strategic leadership team.</p>
+        </div>
+    </section>
+
+    <section id="privacy">
+        <div class="section-header">
+            <h2>Privacy Policy</h2>
+            <p>Zytherix Systems is committed to transparency and user data sovereignty across all applications.</p>
+        </div>
+        <div class="privacy-box">
+            <h3>1. Data Governance</h3>
+            <p>We adhere to a data-minimization approach. Zytherix Systems only collects information strictly necessary for software functionality, such as crash logs for debugging or hardware identifiers for licensing.</p>
+            
+            <h3>2. Third-Party Integration</h3>
+            <p>Our products may utilize secondary services (e.g., Google Play Services, Firebase, or AdMob) which handle data according to their respective industry-standard privacy policies.</p>
+            
+            <h3>3. Permissions & Consent</h3>
+            <p>Mobile applications may request permissions (Storage, Internet, Camera) solely to enable declared features. We never harvest private browsing data or personal identifiers without explicit user authorization.</p>
+            
+            <h3>4. Security Protocols</h3>
+            <p>All data transmitted through Zytherix platforms is secured via SSL/TLS encryption and stored using industry-standard protection layers to prevent unauthorized access.</p>
+            
+            <h3>5. User Rights</h3>
+            <p>Users maintain the right to request data deletion or access at any time. For compliance inquiries, please contact our legal team at the email provided above.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">ZYTHERIX<span>SYSTEMS</span></div>
+        <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto;">Pioneering the next generation of scalable digital ecosystems and intelligent utility software.</p>
+        <p class="copyright">© 2026 Zytherix Systems. All Rights Reserved. Engineered for Global Scale.</p>
+    </footer>
 
 </body>
 </html>
